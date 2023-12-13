@@ -42,5 +42,6 @@ typedef struct instruction_s
 /* OPCODES INSTRACTIONS */
 void m_push(stack_t **stack, unsigned int line_number);
 void m_pall(stack_t **stack, unsigned int line_number);
+void m_pint(stack_t **stack, unsigned int line_number);
 
 #endif

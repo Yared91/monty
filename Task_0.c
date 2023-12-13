@@ -28,7 +28,7 @@ void m_push(stack_t **stack, unsigned int line_number)
 		return;
 	}
 
-	*stack->prev = node;
+	(*stack)->prev = node;
 	node->n = monty_push;
 	node->next = *stack;
 	node->prev = NULL;
