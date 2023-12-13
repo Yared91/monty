@@ -15,7 +15,7 @@ void m_push(stack_t **stack, unsigned int line_number)
 
 	if (node == NULL)
 	{
-		printf("Error: malloc failed");
+		printf("Error: malloc failed", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -51,4 +51,5 @@ void m_pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", top->n);
 		top = top->next;
 	}
+	(void)line_number;
 }
