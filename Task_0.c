@@ -15,9 +15,10 @@ void m_push(stack_t **stack, unsigned int line_number)
 
 	if (node == NULL)
 	{
-		printf("Error: malloc failed", line_number);
+		printf("Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
+	(void)line_number;
 
 	if (*stack == NULL)
 	{
