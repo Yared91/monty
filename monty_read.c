@@ -10,14 +10,14 @@
 
 void m_read(char *name, stack_t **stack)
 {
-	FILE *new_file = fopen(name, "r");
+	FILE *new_file;
 	char *size = NULL;
 	char *get_line;
 	size_t len = 0;
-	ssize_t read_line;
-	int i = 1;
+	unsigned int i = 0;
 	void (*func)(stack_t**, unsigned int);
 
+	new_file = fopen(name, "r");
 
 	if (new_file == NULL)
 	{
@@ -25,11 +25,11 @@ void m_read(char *name, stack_t **stack)
 		exit(EXIT_FAILURE);
 	}
 
-	while ((read_line = getline(&size, &len, new_file)) != -1)
+	while (getline(&size, &len, new_file) != -1)
 	{
 		get_line = m_parse(size, stack, i);
 
-		if (get_line[0] == '\n' || get_line[0] == '#')
+		if (get_line == NULL || get_line[0] == '#')
 		{
 			i++;
 			continue;
@@ -38,7 +38,7 @@ void m_read(char *name, stack_t **stack)
 		func = get_op_func(get_line);
 		if (func == 0)
 		{
-			printf("L%d: unknown instruction %s\n", i, get_line);
+			fprintf(stderr, "L%d: unknown instruction %s\n", i, get_line);
 			exit(EXIT_FAILURE);
 
 		}
