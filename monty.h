@@ -51,7 +51,7 @@ void m_swap(stack_t **stack, unsigned int line_number);
 void m_add(stack_t **stack, unsigned int line_number);
 void m_nop(stack_t **stack, unsigned int line_number);
 void m_read(char *name, stack_t **stack);
-op_instruction get_op_func(char *opcode);
+void (*get_op_func(char *opcode))(stack_t**, unsigned int);
 char *m_parse(char *get_line, stack_t **stack, unsigned int line_number);
 int checknum(char *op);
 #endif

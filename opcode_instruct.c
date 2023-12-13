@@ -3,14 +3,14 @@
 /**
  * get_op_func - shows the opcode functions
  * @opcode: pointer funciton
- * Return: NULL
+ * Return: opcodes
  */
 
-op_instruction get_op_func(char *opcode)
+void (*get_op_func(char *opcode))(stack_t**, unsigned int)
 {
 	unsigned int j;
 
-	instruction_t funcitons[] = {
+	instruction_t functions[] = {
 		{"push", m_push},
 		{"pall", m_pall},
 		{"pint", m_pint},
@@ -22,7 +22,7 @@ op_instruction get_op_func(char *opcode)
 
 	for (j = 0; functions[j].opcode; j++)
 	{
-		if (strcmp(op_code, functions[j].opcode) == 0)
+		if (strcmp(opcode, functions[j].opcode) == 0)
 			return (functions[j].f);
 
 	}

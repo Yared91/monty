@@ -13,7 +13,7 @@ void m_read(char *name, stack_t **stack)
 
 	if (new_file == NULL)
 	{
-		fpintf(stderr, "Error: Can't open file %s\n", name);
+		fprintf(stderr, "Error: Can't open file %s\n", name);
 		exit(EXIT_FAILURE);
 	}
 	char *size = NULL;
@@ -21,7 +21,7 @@ void m_read(char *name, stack_t **stack)
 	size_t len = 0;
 	size_t read_line;
 	int i = 1;
-	op_instruction func;
+	int func;
 
 	while (1)
 	{
@@ -37,10 +37,10 @@ void m_read(char *name, stack_t **stack)
 		}
 
 		func = get_op_func(get_line);
-		if (func == NULL)
+		if (func == 0)
 		{
 			printf("L%d: unknown instruction %s\n", i, get_line);
-			exit("EXIT_FAILURE");
+			exit(EXIT_FAILURE);
 
 		}
 		func(stack, i);

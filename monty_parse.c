@@ -17,7 +17,7 @@ char *m_parse(char *get_line, stack_t **stack, unsigned int line_number)
 	add = "push";
 	op = strtok(get_line, "\n");
 
-	if (stcmp(op, add) == 0)
+	if (strcmp(op, add) == 0)
 	{
 		args = strtok(NULL, "\n");
 		if (checknum(args))
