@@ -7,7 +7,6 @@
 *Return: 0 Always success
 */
 
-int monty_push = 0;
 
 int main(int argc, char **argv)
 {
@@ -20,5 +19,5 @@ int main(int argc, char **argv)
 	}
 
 	m_read(argv[1], &(*stack));
-	return (0);
+	exit(EXIT_FAILURE);
 }

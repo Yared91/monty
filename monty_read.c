@@ -6,8 +6,7 @@
  * @stack: pointer to the stack_t list
  * Return: void
  */
-size_t getline(char **lineptr, size_t *n, FILE *stream);
-void (*get_op_func(char *opcode))(stack_t**, unsigned int);
+
 
 void m_read(char *name, stack_t **stack)
 {
@@ -15,9 +14,10 @@ void m_read(char *name, stack_t **stack)
 	char *size = NULL;
 	char *get_line;
 	size_t len = 0;
-	int read_line = getline(&size, &len, new_file);
+	ssize_t read_line;
 	int i = 1;
 	void (*func)(stack_t**, unsigned int);
+
 
 	if (new_file == NULL)
 	{
