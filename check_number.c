@@ -8,10 +8,12 @@
 
 int checknum(char *op)
 {
-for (unsigned int a = 0; op[a]; a++)
+unsigned int a = 0; 
+while (op[a])
 {
 	if (!isdigit(op[a]))
 		return (0);
+	a++;
 }
 return (1);
 }

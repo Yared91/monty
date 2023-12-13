@@ -9,15 +9,16 @@
 
 int monty_push = 0;
 
-int main(char argc, char **argv)
+int main(int argc, char **argv)
 {
+	stack_t **stack = NULL;
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
-	stack_t *stack = NULL;
-	m_read(argv[1], &stack);
+	m_read(argv[1], &(*stack));
 	return (0);
 }

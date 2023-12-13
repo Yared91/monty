@@ -35,6 +35,6 @@ char *m_parse(char *get_line, stack_t **stack, unsigned int line_number)
 		return (NULL);
 
 	}
-	else
+		free(stack);
 		return (op);
 }
