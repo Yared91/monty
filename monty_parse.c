@@ -26,7 +26,7 @@ char *m_parse(char *get_line, stack_t **stack, unsigned int line_number)
 		}
 		else
 		{
-			printf("L%d usage: push integer\n", line_number);
+			fprintf(stderr, "L%d usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 	}
