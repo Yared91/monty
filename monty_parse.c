@@ -20,7 +20,7 @@ char *m_parse(char *get_line, stack_t **stack, unsigned int line_number)
 	if (stcmp(op, add) == 0)
 	{
 		args = strtok(NULL, "\n");
-		if (isnumber(args))
+		if (checknum(args))
 		{
 			monty_push = atoi(args);
 		}

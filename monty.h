@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
+
 
 /*GLOBAL DECLARATION*/
 extern int monty_push;
@@ -40,6 +42,7 @@ typedef struct instruction_s
 } instruction_t;
 
 /* OPCODES INSTRACTIONS */
+int main(char argc, char **argv);
 void m_push(stack_t **stack, unsigned int line_number);
 void m_pall(stack_t **stack, unsigned int line_number);
 void m_pint(stack_t **stack, unsigned int line_number);
@@ -49,5 +52,6 @@ void m_add(stack_t **stack, unsigned int line_number);
 void m_nop(stack_t **stack, unsigned int line_number);
 void m_read(char *name, stack_t **stack);
 op_instruction get_op_func(char *opcode);
-
+char *m_parse(char *get_line, stack_t **stack, unsigned int line_number);
+int checknum(char *op);
 #endif
