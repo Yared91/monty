@@ -54,7 +54,7 @@ void m_add(stack_t **stack, unsigned int line_number);
 void m_nop(stack_t **stack, unsigned int line_number);
 void m_read(char *name, stack_t **stack);
 void (*get_op_func(char *opcode))(stack_t**, unsigned int);
-char *m_parse(char *get_line, stack_t **stack, unsigned int line_number);
+char *m_parse(ssize_t get_line, stack_t **stack, unsigned int line_number);
 int checknum(char *op);
 void free_fun(stack_t **stack);
 stack_t *add_dnodeint_end(stack_t **head, const int n);
