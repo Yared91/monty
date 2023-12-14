@@ -20,7 +20,7 @@ char *m_parse(char *get_line, stack_t **stack, unsigned int line_number)
 	{
 		if (monty_push == 1)
 		{
-			m_push(&(*stack), line_number, op);
+			m_push(&*stack, line_number);
 			monty_push = 0;
 			op = strtok(get_line, "\n\t\r\a");
 			line_number++;
@@ -32,13 +32,13 @@ char *m_parse(char *get_line, stack_t **stack, unsigned int line_number)
 			{
 				get_op_func(op)(stack, line_number);
 			}
-			free_fun(&stack);
+			free_fun(&*stack);
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op);
 			exit(EXIT_FAILURE);
 		}
 		line_number++;
 		op = strtok(get_line, "\n\t\r\a");
 	}
-	 free_fun(&(*stack));
+	 free_fun(&*stack);
 	 return (0);
 }
