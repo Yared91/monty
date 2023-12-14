@@ -11,13 +11,11 @@
 
 void m_read(char *name, stack_t **stack)
 {
-	FILE *new_file;
+	int new_file;
 	char *size = NULL;
-	size_t len = 0;
 	ssize_t read_line;
-	unsigned int i = 0;
 
-	new_file = fopen(name, "r");
+	new_file = open(name, O_RDONLY);
 
 	if (new_file == -1)
 	{
@@ -26,12 +24,13 @@ void m_read(char *name, stack_t **stack)
 	}
 	 size = malloc(sizeof(char) * 2000);
 	 if (!size)
-		 return (0);
+		 return;
 	 read_line = read(new_file, size, 2000);
-			 if (readline == -1)
+			 if (read_line == -1)
 			 {
 			 free(size);
-			 fclose(new_file);
+			 close(new_file);
 			 exit(EXIT_FAILURE);
 			 }
+			 (void)stack;
 }
