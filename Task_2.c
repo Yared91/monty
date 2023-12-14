@@ -17,12 +17,5 @@ void m_pop(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	else
-	{
-		top = (*stack)->next;
-		free(*stack);
-	}
-	if (top)
-	{
-		top->prev = NULL;
-	}
+		delete_dnodeint_at_index(top);
 }
