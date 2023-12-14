@@ -26,8 +26,9 @@ exit(EXIT_FAILURE);
 }
 size = malloc(sizeof(char) * 2000);
 if (!size)
+close(new_file);
 return;
-read_line = read(new_file, size, 2000);
+read_line = getline(new_file, size, stdin);
 if (read_line == -1)
 {
 free(size);
@@ -35,37 +36,45 @@ close(new_file);
 exit(EXIT_FAILURE);
 }
 
-op = strtok((char *)read_line, "\n\t\r\a");
+op = strtok(size, "\n\t\r\a");
 
 while (op != NULL)
 {
-if (op == NULL || op[0] == '#')
+if (op[0] == '#' || op[0] == '\0')
 {
 line_number++;
+op = strtok(NULL, "\n\t\r\a");
 continue;
 }
 
 if (monty_push == 1)
 {
-m_push(&*stack, line_number);
+m_push(stack, line_number);
 monty_push = 0;
-op = strtok((char *)read_line, "\n\t\r\a");
 line_number++;
+op = strtok(NULL, "\n\t\r\a");
 continue;
 }
 else
 {
-if (get_op_func(op) != 0)
+void (*func)(stack_t**, unsigned int);
+func = get_op_func(op);
+if (func != 0)
 {
-get_op_func(op)(stack, line_number);
+func(stack, line_number);
 }
-free_fun(&*stack);
+else
+{
+free_fun(stack);
 fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op);
 exit(EXIT_FAILURE);
 }
-line_number++;
-op = strtok((char *)read_line, "\n\t\r\a");
 }
-free_fun(&*stack);
+line_number++;
+op = strtok(NULL, "\n\t\r\a");
+}
+free(size);
+close(new_file);
+free_fun(stack);
 return;
 }
