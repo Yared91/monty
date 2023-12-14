@@ -19,5 +19,6 @@ int main(int argc, char **argv)
 	}
 
 	m_read(argv[1], &(*stack));
+	free_fun(stack);
 	exit(EXIT_FAILURE);
 }

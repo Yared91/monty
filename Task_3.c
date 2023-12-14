@@ -9,14 +9,27 @@
 
 void m_swap(stack_t **stack, unsigned int line_number)
 {
-	int val;
+	stack_t *top = NULL;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	val = (*stack)->n;
-	(*stack)->n = (*stack)->next->n;
-	(*stack)->next->n = val;
+
+	top = (*stack)->next;
+
+	if (top->next != NULL)
+	{
+		(*stack)->next = top->next;
+		(*stack)->next->prev = *stack;
+	}
+	else
+	{
+		top->prev->prev = top;
+		top->prev->next = NULL;
+	}
+	top->prev = NULL;
+	top->next = *stack;
+	(*stack) = top;
 }
