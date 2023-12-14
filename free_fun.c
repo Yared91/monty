@@ -12,8 +12,7 @@ void free_fun(stack_t **stack)
 	while (stack != NULL)
 	{
 		top = stack->next;
-		free((*stack)->prev);
-		stack = top;
 		free(*stack);
+		stack = top;
 	}
 }

@@ -9,7 +9,7 @@
  * Return: the address of the new element, or NULL if it failed.
  */
 
-int *add_dnodeint(stack_t **head, const int n)
+stack_t *add_dnodeint(stack_t **head, const int n)
 {
 	stack_t *new_list;
 
@@ -41,7 +41,7 @@ int *add_dnodeint(stack_t **head, const int n)
  * Return: address of the new element or NULL if it failed.
  */
 
-int *add_dnodeint_end(stack_t **head, const int n)
+stack_t *add_dnodeint_end(stack_t **head, const int n)
 {
 	stack_t *new_list, *trav;
 	 if (!head)
@@ -81,7 +81,7 @@ int *add_dnodeint_end(stack_t **head, const int n)
  *
  * Return: if it succeeded, -1 if it failed
  */
-void delete_dnodeint_at_index(stack_t **head)
+int delete_dnodeint_at_index(stack_t **head)
 {
 	stack_t *first;
 
