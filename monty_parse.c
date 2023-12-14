@@ -7,10 +7,9 @@
  * Return: the parsed result
  */
 
-char *m_parse(char *get_line, stack_t **stack, unsigned int line_number)
+char *m_parse(char *size, stack_t **stack, unsigned int line_number)
 {
 char *op;
-char *size;
 int ispush = 0;
 void (*func)(stack_t**, unsigned int);
 
@@ -60,6 +59,5 @@ op = strtok(NULL, "\n\t\r\a");
 }
 free_fun(stack);
 free(size);
-(void)get_line;
 return (NULL);
 }
