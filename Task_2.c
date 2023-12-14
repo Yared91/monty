@@ -9,7 +9,6 @@
 
 void m_pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *top;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -17,5 +16,5 @@ void m_pop(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	else
-		delete_dnodeint_at_index(top);
+		delete_dnodeint_at_index(stack);
 }
