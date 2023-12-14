@@ -13,28 +13,36 @@ char *m_parse(char *get_line, stack_t **stack, unsigned int line_number)
 	char *op;
 	char *add;
 	char *args;
+	int monty_push = 0;
+	unsigned int line_number = 1;
 
-	add = "push";
-	op = strtok(get_line, "\n");
 
-	if (strcmp(op, add) == 0)
+	add = "m_push";
+	op = strtok(get_line, "\n\t\r\a");
+
+	while (op != NULL)
 	{
-		args = strtok(NULL, "\n");
-		if (checknum(args))
+		if (monty_push == 1)
 		{
-			monty_push = atoi(args);
+			add(&stack, line_number, op);
+			monty_push = 0;
+			op = strtok(get_line, "\n\t\r\a");
+			line_number++;
+			continue;
 		}
 		else
 		{
-			fprintf(stderr, "L%d usage: push integer\n", line_number);
+			if (get_op_func(op) != 0)
+			{
+				get_op_func(op)(stack, line_number);
+			}
+			free_fun(&stack);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op);
 			exit(EXIT_FAILURE);
 		}
+		line_number++;
+		op = strtok(get_line, "\n\t\r\a");
 	}
-	else if (op == NULL)
-	{
-		return (NULL);
-
-	}
-		free(stack);
-		return (op);
+	 free_fun(&stack);
+	 return (0);
 }

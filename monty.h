@@ -9,7 +9,6 @@
 
 
 /*GLOBAL DECLARATION*/
-extern int monty_push;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -54,4 +53,9 @@ void m_read(char *name, stack_t **stack);
 void (*get_op_func(char *opcode))(stack_t**, unsigned int);
 char *m_parse(char *get_line, stack_t **stack, unsigned int line_number);
 int checknum(char *op);
+void free_fun(stack_t **stack);
+int *add_dnodeint_end(stack_t **head, const int n);
+int *add_dnodeint(stack_t **head, const int n);
+void delete_dnodeint_at_index(stack_t **head);
+
 #endif

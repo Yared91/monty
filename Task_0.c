@@ -4,36 +4,27 @@
 *m_push - It adds a new element to the stack_t linked list
 *@stack: is a pointer to the top most element in the stack
 *@line_number: working line number of monty
+*@abc: character pointer
 *Return: void
 */
 
 void m_push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *node;
+	char abc;
 
-	node = malloc(sizeof(stack_t));
-
-	if (node == NULL)
+	if (!isdigit(abc))
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_fun(stack);
 		exit(EXIT_FAILURE);
 	}
-	(void)line_number;
-
-	if (*stack == NULL)
-	{
-		node->n = monty_push;
-		node->next = NULL;
-		node->prev = NULL;
-		*stack = node;
-		return;
-	}
-
-	(*stack)->prev = node;
-	node->n = monty_push;
-	node->next = *stack;
-	node->prev = NULL;
-	*stack = node;
+		if (add_dnodeint_end(stack, atoi(&abc) == NULL))
+		{
+			fprintf(stderr, "Error: malloc failed\n");
+			free_fun(stack);
+			exit(EXIT_FAILURE);
+			}
+		(void)line_number;
 }
 
 /**
@@ -45,12 +36,17 @@ void m_push(stack_t **stack, unsigned int line_number)
 
 void m_pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *top = *stack;
+	stack_t **top = stack;
 
-	while (top != NULL)
+	if (top == NULL)
 	{
-		printf("%d\n", top->n);
-		top = top->next;
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		free_fun(top);
+		exit(EXIT_FAILURE);
 	}
+	else
+	{
+		delete_dnodeint_at_index(top);
 	(void)line_number;
+	}
 }
