@@ -15,6 +15,8 @@ void (*func)(stack_t**, unsigned int);
 
 line_number = 1;
 size = malloc(sizeof(char) * 2000);
+if (!size)
+	return (NULL);
 
 op = strtok(size, "\n\t\r\a");
 
@@ -25,10 +27,9 @@ if (op == NULL || op[0] == '#')
 line_number++;
 continue;
 }
-
 if (ispush == 1)
 {
-m_push(&*stack, line_number);
+m_push(stack, line_number);
 ispush = 0;
 op = strtok(NULL, "\n\t\r\a");
 line_number++;
@@ -40,20 +41,15 @@ else if (strcmp(op, "m_push") == 0)
 	op = strtok(NULL, "\n\t\r\a");
 	continue;
 }
-else
-{
+
 func = get_op_func(op);
 if (func != 0)
 {
 func(stack, line_number);
 }
-else
-{
-free_fun(&*stack);
+free_fun(stack);
 fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op);
 exit(EXIT_FAILURE);
-}
-}
 line_number++;
 op = strtok(NULL, "\n\t\r\a");
 }
