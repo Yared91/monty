@@ -10,12 +10,14 @@
 char *m_parse(char *get_line, stack_t **stack, unsigned int line_number)
 {
 char *op;
+char *size;
 int ispush = 0;
 void (*func)(stack_t**, unsigned int);
 
 line_number = 1;
+size = malloc(sizeof(char) * 2000);
 
-op = strtok(get_line, "\n\t\r\a");
+op = strtok(size, "\n\t\r\a");
 
 while (op != NULL)
 {
@@ -29,9 +31,15 @@ if (ispush == 1)
 {
 m_push(&*stack, line_number);
 ispush = 0;
-op = strtok(get_line, "\n\t\r\a");
+op = strtok(NULL, "\n\t\r\a");
 line_number++;
 continue;
+}
+else if (strcmp(op, "m_push") == 0)
+{
+	ispush = 1;
+	op = strtok(NULL, "\n\t\r\a");
+	continue;
 }
 else
 {
@@ -48,8 +56,10 @@ exit(EXIT_FAILURE);
 }
 }
 line_number++;
-op = strtok(get_line, "\n\t\r\a");
+op = strtok(NULL, "\n\t\r\a");
 }
 free_fun(stack);
+free(size);
+(void)get_line;
 return (NULL);
 }
