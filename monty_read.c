@@ -13,6 +13,7 @@ void m_read(char *name, stack_t **stack)
 int new_file;
 char *size = NULL;
 ssize_t read_line;
+unsigned int line_number = 1;
 
 new_file = open(name, O_RDONLY);
 
@@ -30,6 +31,6 @@ if (read_line == -1)
 free(size);
 close(new_file);
 exit(EXIT_FAILURE);
-(void)stack;
+m_parse(size, stack, line_number);
 }
 }

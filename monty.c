@@ -8,17 +8,16 @@
 */
 
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	stack_t **stack = NULL;
+stack_t **stack = NULL;
 
-	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-
-	m_read(argv[1], &(*stack));
-	free_fun(stack);
-	exit(EXIT_FAILURE);
+if (argc != 2)
+{
+fprintf(stderr, "USAGE: monty file\n");
+exit(EXIT_FAILURE);
+}
+m_read(argv[1], &(*stack));
+free_fun(stack);
+return (0);
 }
