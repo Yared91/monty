@@ -18,7 +18,7 @@ void m_push(stack_t **stack, unsigned int line_number)
 		free_fun(stack);
 		exit(EXIT_FAILURE);
 	}
-		if (add_dnodeint_end(stack, atoi(&abc) == NULL))
+		if (add_dnodeint_end(stack, atoi(&abc) == 0))
 		{
 			fprintf(stderr, "Error: malloc failed\n");
 			free_fun(stack);
