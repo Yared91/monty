@@ -2,6 +2,7 @@
 
 /**
  * m_parse - parses the read file
+ * @size: allocates memory
  * @stack: is a pointer to the top most element in the stack
  * @line_number: working line number of monty
  * Return: the parsed result

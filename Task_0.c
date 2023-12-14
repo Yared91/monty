@@ -10,7 +10,7 @@
 
 void m_push(stack_t **stack, unsigned int line_number)
 {
-	char abc;
+	const char *abc;
 
 	if (!isdigit(abc))
 	{
