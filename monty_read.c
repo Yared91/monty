@@ -26,7 +26,7 @@ void m_read(char *name, stack_t **stack)
 		exit(EXIT_FAILURE);
 	}
 
-	while (getline(&size, &len, new_file) != -1)
+	while (fgets((char *)&size, (size_t)&len, new_file) != NULL)
 	{
 		get_line = m_parse(size, stack, i);
 
