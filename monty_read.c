@@ -11,26 +11,26 @@
 
 void m_read(char *name, stack_t **stack)
 {
-	int new_file;
-	char *size = NULL;
-	ssize_t read_line;
+int new_file;
+char *size = NULL;
+ssize_t read_line;
 
-	new_file = open(name, O_RDONLY);
+new_file = open(name, O_RDONLY);
 
-	if (new_file == -1)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", name);
-		exit(EXIT_FAILURE);
-	}
-	 size = malloc(sizeof(char) * 2000);
-	 if (!size)
-		 return;
-	 read_line = read(new_file, size, 2000);
-			 if (read_line == -1)
-			 {
-			 free(size);
-			 close(new_file);
-			 exit(EXIT_FAILURE);
-			 }
-			 (void)stack;
+if (new_file == -1)
+{
+fprintf(stderr, "Error: Can't open file %s\n", name);
+exit(EXIT_FAILURE);
+}
+size = malloc(sizeof(char) * 2000);
+if (!size)
+return;
+read_line = read(new_file, size, 2000);
+if (read_line == -1)
+{
+free(size);
+close(new_file);
+exit(EXIT_FAILURE);
+}
+(void)stack;
 }
