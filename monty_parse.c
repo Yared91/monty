@@ -11,20 +11,16 @@
 char *m_parse(char *get_line, stack_t **stack, unsigned int line_number)
 {
 	char *op;
-	char *add;
-	char *args;
 	int monty_push = 0;
-	unsigned int line_number = 1;
+	line_number = 1;
 
-
-	add = "m_push";
 	op = strtok(get_line, "\n\t\r\a");
 
 	while (op != NULL)
 	{
 		if (monty_push == 1)
 		{
-			add(&stack, line_number, op);
+			m_push(&stack, line_number, op);
 			monty_push = 0;
 			op = strtok(get_line, "\n\t\r\a");
 			line_number++;
@@ -43,6 +39,6 @@ char *m_parse(char *get_line, stack_t **stack, unsigned int line_number)
 		line_number++;
 		op = strtok(get_line, "\n\t\r\a");
 	}
-	 free_fun(&stack);
+	 free_fun(*stack);
 	 return (0);
 }
