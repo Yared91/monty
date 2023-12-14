@@ -49,8 +49,10 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 	/* creat the new node*/
 	new_list = malloc(sizeof(stack_t));
 	if (new_list == NULL)
+	{
 		fprintf(stderr, "Error: malloc failed");
 		return (NULL);
+	}
 
 	new_list->n = n;
 	new_list->next = NULL;
@@ -84,6 +86,7 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 int delete_dnodeint_at_index(stack_t **head)
 {
 	stack_t *first;
+	int index;
 
 	first = *head;
 
