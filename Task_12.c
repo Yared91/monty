@@ -11,12 +11,6 @@ void m_pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *j;
 
-	if (!stack || !*stack)
-	{
-		fprintf(stderr, "L%d: can't pstr, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-
 	j = *stack;
 
 	while ((j != NULL) && (j->n != 0) && (j->n >= 0) && (j->n <= 127))
@@ -25,4 +19,6 @@ void m_pstr(stack_t **stack, unsigned int line_number)
 		j = j->next;
 	}
 	printf("\n");
+
+	(void)line_number;
 }
