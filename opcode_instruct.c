@@ -24,6 +24,8 @@ void (*get_op_func(char *opcode))(stack_t**, unsigned int)
 		{"mod", m_mod},
 		{"pchar", m_pchar},
 		{"pstr", m_pstr},
+		{"rotl", m_rotl},
+		{"rotr", m_rotr},
 		{NULL, NULL},
 	};
 
