@@ -1,11 +1,10 @@
 #include "monty.h"
 
 /**
-*m_push - It adds a new element to the stack_t linked list
-*@stack: is a pointer to the top most element in the stack
-*@line_number: working line number of monty
-*@abc: character pointer
-*Return: void
+* m_push - It adds a new element to the stack_t linked list
+* @stack: is a pointer to the top most element in the stack
+* @line_number: working line number of monty
+* Return: void
 */
 
 void m_push(stack_t **stack, unsigned int line_number)
