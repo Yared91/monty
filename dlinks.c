@@ -41,18 +41,18 @@ stack_t *add_dnodeint(stack_t **head, const int n)
  * Return: address of the new element or NULL if it failed.
  */
 
-stack_t *add_dnodeint_end(stack_t **head, const int n)
+int add_dnodeint_end(stack_t **head, const int n)
 {
 	stack_t *new_list, *trav;
 
 	if (!head)
-		return (NULL);
+		return (1);
 	/* creat the new node*/
 	new_list = malloc(sizeof(stack_t));
 	if (new_list == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
-		return (NULL);
+		return (1);
 	}
 
 	new_list->n = n;
@@ -63,7 +63,7 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 	{
 		new_list->prev = NULL;
 		*head = new_list;
-		return (new_list);
+		return (0);
 	}
 	else
 	{
@@ -74,7 +74,7 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 	trav->next = new_list;
 	}
 	new_list->prev = trav;
-	return (new_list);
+	return (0);
 }
 
 /**

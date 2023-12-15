@@ -57,7 +57,7 @@ void (*get_op_func(char *opcode))(stack_t**, unsigned int);
 char *m_parse(char *size, stack_t **stack, unsigned int line_number);
 int checknum(char *op);
 void free_fun(stack_t **stack);
-stack_t *add_dnodeint_end(stack_t **head, const int n);
+int add_dnodeint_end(stack_t **head, const int n);
 stack_t *add_dnodeint(stack_t **head, const int n);
 int delete_dnodeint_at_index(stack_t **head);
 void m_sub(stack_t **stack, unsigned int line_number);
