@@ -9,20 +9,22 @@
 
 void m_pchar(stack_t **stack, unsigned int line_number)
 {
-	if (!stack || !*stack)
+	int val;
+
+	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pchar, value out of range\n",
+		fprintf(stderr, "L%d: can't pchar, stack empty\n",
 		line_number);
 		exit(EXIT_FAILURE);
 	}
+	val = *stack->n;
 
-	if (((*stack)->n) >= 0 && ((*stack)->n) <= 127)
+	if (val < 0 || val > 127)
 	{
-		printf("%c\n", (*stack)->n);
-	}
-	else
-	{
-		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+
+	putchar(val);
+	putchar('\n')
 }
